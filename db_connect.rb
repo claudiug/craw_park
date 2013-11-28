@@ -6,7 +6,6 @@ class DbConnect
     DBNAME = ""
   end
 
-
   private
 
   def get_connection_status
@@ -20,5 +19,4 @@ class DbConnect
   def fall_back_as_file
     #TODO as file
   end
-
 end
