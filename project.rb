@@ -13,10 +13,14 @@ class Project
      end
   end
   data.delete_if{|m| m.include?('mail')}
-  puts data
 
-  page1 = Nokogiri::HTML(open('http://www.park-one.com/standorte/süd-münchen/'))
-  page1.each do |node|
-    puts node.css('#cc-m-6520329884').text
+  page1 = Nokogiri::HTML(open(URI.encode(data[0])))
+  page1.css('#cc-matrix-1528937084').each do |info|
+    info.css('.cc-m-hgrid-column').each do |block|
+      block.css('#cc-m-6520329884').each do |c|
+        puts c.text.delete("\n").split(" ").
+      end
+    end
+
   end
 end
