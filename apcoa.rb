@@ -18,5 +18,8 @@ class Project
   link1 =  agent.get(ap_links[0])
   #/\/(.*)/ = get all the data after the / any character even ;.
   link2 = link1.search('tr[onclick]').map{|n| n['onclick'][/\/(.*)/]}
+  url1 = link2[0].chop!.chop!
+  dd = agent.get(BASE_URL + url1)
+  puts dd.search('//*[@id="standorte"]').text
 
 end
