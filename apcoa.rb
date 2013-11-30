@@ -17,5 +17,5 @@ class Project
   agent = Mechanize.new
   link1 =  agent.get(ap_links[3])
   puts link1.title
-  puts link1.links.size
+  puts link1.links
 end
