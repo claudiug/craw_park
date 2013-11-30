@@ -15,7 +15,8 @@ class Project
   end
 
   agent = Mechanize.new
-  link1 =  agent.get(ap_links[3])
-  puts link1.title
-  puts link1.links.size
+  link1 =  agent.get(ap_links[0])
+
+  link2 = link1.search('tr[onclick]').map{|n| n['onclick'][/\/(.*)/]}
+
 end
