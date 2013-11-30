@@ -18,7 +18,7 @@ class Project
   page1.css('#cc-matrix-1528937084').each do |info|
     info.css('.cc-m-hgrid-column').each do |block|
       block.css('#cc-m-6520329884').each do |c|
-        puts c.text.delete("\n").split(" ").
+        puts c.text.delete("\n").split(" ")
       end
     end
 
