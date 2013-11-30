@@ -16,7 +16,7 @@ class Project
 
   agent = Mechanize.new
   link1 =  agent.get(ap_links[0])
-
+  #/\/(.*)/ = get all the data after the / any character even ;.
   link2 = link1.search('tr[onclick]').map{|n| n['onclick'][/\/(.*)/]}
 
 end
