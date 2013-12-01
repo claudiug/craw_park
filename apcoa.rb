@@ -15,11 +15,17 @@ class Project
   end
 
   agent = Mechanize.new
-  link1 =  agent.get(ap_links[0])
-  #/\/(.*)/ = get all the data after the / any character even ;.
-  link2 = link1.search('tr[onclick]').map{|n| n['onclick'][/\/(.*)/]}
-  url1 = link2[0].chop!.chop!
-  dd = agent.get(BASE_URL + url1)
-  puts dd.search('//*[@id="standorte"]').text
+  file = File.open('dump.txt', 'w')
+  find_link = Mechanize.new
+  ap_links.each do |link|
+    new_mechanize = agent.get(link)
+    create_links = new_mechanize.search('tr[onclick]').map{|n| n['onclick'][/\/(.*)/]}
+    puts create_links
+    create_links.each do |url_link|
+      make_link = url_link.chop!.chop!
+      get_text = find_link.get(BASE_URL + make_link).search('//*[@id="standorte"]').text
+      file.puts(get_text)
+    end
 
+  end
 end
