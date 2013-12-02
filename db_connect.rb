@@ -1,4 +1,14 @@
+require 'rubygems'
+require 'active_record'
 class DbConnect
+
+  ActiveRecord::Base.establish_connection(
+      :adapter => "mysql",
+      :host => "localhost",
+      :database => "appdb",
+      :username => "appuser",
+      :password => "secret"
+  )
 
   module ENV
     URL = ""
